@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background: none;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 300;
+    background: rgb(19, 19, 19);
+    overflow: hidden;
+}
+
+body {
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    width: min-content;
+    height: 100%;
+}
+
+img {
+    display: block;
+}
+
+#game-col-canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+}
+
+#game-bg-image {
+    height: 100%;
+    width: auto;
+}
+
+#game-bg-image.pointed-at:hover {
+    cursor: pointer;
+}
+
+#dialog-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.61);
+    padding: 8px 0;
+}
+
+#dialog-container.undisplayed {
+    display: none;
+}
+
+#dialog-text-container:hover {
+    cursor: default;
+}
+
+#dialog-text-container,
+.dialog-response {
+    padding: 4px 50px;
+}
+
+.dialog-response {
+    text-align: right;
+}
+
+.dialog-response:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.055);
+}
+
+#trigger-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;   
+}
+
+.trigger {
+    margin: -45px 0 0 -45px;
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s;
+    will-change: background-color;
+}
+
+.trigger:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.trigger-cue {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: trigger-cue-pulse 1.2s infinite;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.4s;
+    will-change: background-color, transform;
+}
+
+@keyframes trigger-cue-pulse {
+    0% {
+        transform: scale(0.5);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.5);
+    }
+}
+
+.trigger:hover .trigger-cue {
+    background-color: transparent;
+}
+
+#avatar-container {
+    width: 100%;
+    height: 100%;
+    padding: 0 12%;
+    background-color: rgba(255, 255, 255, 0.226);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1.2s;
+    will-change: opacity;
+}
+
+#avatar-container.presenting {
+    opacity: 100%;
+}
+
+#avatar-container.undisplayed {
+    display: none;
+}
+
+.avatar {
+    position: absolute;
+    bottom: -20%;
+    display: block;
+    height: 110%;
+    width: auto;
+    transition: opacity 1.2s, transform 1.2s;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.avatar-on-left {
+    left: 0;
+    transform: translateX(-60px);
+    padding-left: inherit;
+}
+
+.avatar-on-right {
+    right: 0;
+    transform: translateX(60px);
+    padding-right: inherit;
+}
+
+.avatar.introduced {
+    opacity: 100%;
+    transform: none;
+}    
+
